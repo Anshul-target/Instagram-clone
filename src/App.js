@@ -28,7 +28,7 @@ function App() {
           By using the element prop and wrapping the Login component with Suspense, we ensure that the Login component is lazily loaded and displayed while showing the fallback loading UI until it is fully loaded. */}
 
 
-
+        {/* Lazy loading me sara code ek baar me nhi aata hai jo taiyaar ho jata wo aa jata hai jo nhi taiiyar hota wo nhi aata */}
         <Route path={ROUTES.LOGIN} element={<Suspense fallback={<p>Loading...</p>}><Login /></Suspense>} />
       </Routes>
     </Router>

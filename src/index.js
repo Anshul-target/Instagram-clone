@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './index.css';
+import './index.css';
 import App from './App';
+
 // import reportWebVitals from './reportWebVitals';
 import FirebaseContext from "./context/firebase"
 import { firebase, FieldValue } from './lib/firebase';
+// import "./styles/app.css"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <FirebaseContext.Provider value={{ firebase, FieldValue }} >
