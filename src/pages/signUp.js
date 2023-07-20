@@ -3,33 +3,31 @@ import * as ROUTES from "../constants/routes"
 // useHistory hook has been replaced with the useNavigate
 import FirebaseContext from "../context/firebase"
 import { useContext, useState, useEffect } from "react";
-export default function Login() {
+export default function SignUp() {
     const history = useNavigate();
     const { auth } = useContext(FirebaseContext);
     // WE NEED ACCES TO FIREBASE WHEN USER SIGN IN ,LOGIN   
-
+    const [username, setUsername] = useState("")
+    const [fullname, setFullname] = useState("")
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const isInvalid = password === "" || emailAddress === "";
 
-    const handleLogin = async (event) => {
+    const handleSignUp = async (event) => {
         event.preventDefault();
         try {
-            await auth.signInWithEmailAndPassword(emailAddress, password);
-            history.push(ROUTES.DASHBOARD);
+
         }
         catch (error) {
-            setEmailAddress("");
-            setPassword("");
-            setError(error.message)
+
 
         }
 
     }
 
     useEffect(() => {
-        document.title = "Login-Instagram"
+        document.title = "SignUp-Instagram"
     }, [])
 
     return (
@@ -51,16 +49,35 @@ export default function Login() {
 
 
                     {error && <p className="ab-4 text-xs text-red-primary">{error}</p>}
-                    <form onSubmit={handleLogin} method="POST">
-                        <input aria-label="Enter your email address"
+                    <form onSubmit={handleSignUp} method="POST">
+                        <input aria-label="Enter your userName"
                             type="text"
-                            placeholder="Email Address"
+                            placeholder="USERNAME"
+
                             className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2  "
 
-                            onChange={({ target }) => setEmailAddress(target.value)}></input>
+                            onChange={({ target }) => setUsername(target.value)}
+                            value={username}></input>
+                        <input aria-label="FullName"
+                            type="text"
+                            placeholder="FULLNAME"
+                            value={fullname}
+                            className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2  "
+
+                            onChange={({ target }) => setFullname(target.value)}></input>
+
+                        <input aria-label="Email"
+                            type="text"
+                            value={emailAddress}
+                            placeholder="EMAIL"
+
+                            className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2  "
+
+                            onChange={({ target }) => setEmailAddress(target.value)} ></input>
                         <input aria-label="Enter your email address"
                             type="password"
-                            placeholder="Password"
+                            value={password}
+                            placeholder="PASSWORD"
                             className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
 
                             onChange={({ target }) => setPassword(target.value)}
@@ -70,7 +87,7 @@ export default function Login() {
                             type="submit"
                             className={`bg-blue-medium text-white w-full rounded h-8 font-bold
                          ${isInvalid && "opacity-50"} cursor-grab`} >
-                            Login
+                            Signup
                         </button>
                     </form>
                 </div>
@@ -78,8 +95,8 @@ export default function Login() {
  npm install prop-types -D
  npm install postcss-cli -D*/}
                 <div className="flex justify-center items-center flex-col w-full bg-white p4 border border-grey-primary ">
-                    <p className="text-sm">Don't have an account?  {`  `}
-                        <Link to="/signup" className="font-bold text-blue-medium">Signup</Link>
+                    <p className="text-sm">Have an account?   {`   `}
+                        <Link to="/login" className="font-bold text-blue-medium">Login</Link>
                     </p>
 
                 </div>
@@ -89,6 +106,3 @@ export default function Login() {
 
 
 }
-
-// text - red - primary =>
-// text - grey - base

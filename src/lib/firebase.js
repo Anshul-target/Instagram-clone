@@ -22,8 +22,8 @@ const { FieldValue } = Firebase.firestore;
 console.log(firebase);
 console.log(FieldValue);
 // Here is where i want to call the seed file
-
+const auth = firebase.auth();
 // seedDatabase(firebase)
-export { firebase, FieldValue }
+export { auth, FieldValue }
 
 

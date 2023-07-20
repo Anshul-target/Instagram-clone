@@ -6,6 +6,7 @@ import * as ROUTES from "./constants/routes";
 
 // It is a new function in react that lets you load react components lazily through code splitting without help from any additional libraries.Lazy loading is the technique of rendering only - needed or critical user interface items first, then quietly unrolling the non - critical items later.It is now fully integrated into core react library itself.We formerly used react - loadable to achieve this but now we have react.lazy() in react core.
 const Login = lazy(() => import("./pages/login"));  //It is a login component
+const SignUp = lazy(() => import("./pages/signUp"));  //It is a login component
 function App() {
   return (
 
@@ -30,6 +31,7 @@ function App() {
 
         {/* Lazy loading me sara code ek baar me nhi aata hai jo taiyaar ho jata wo aa jata hai jo nhi taiiyar hota wo nhi aata */}
         <Route path={ROUTES.LOGIN} element={<Suspense fallback={<p>Loading...</p>}><Login /></Suspense>} />
+        <Route path={ROUTES.SIGN_UP} element={<Suspense fallback={<p>Loading...</p>}><SignUp /></Suspense>} />
       </Routes>
     </Router>
 
